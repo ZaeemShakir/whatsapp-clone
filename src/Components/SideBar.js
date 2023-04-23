@@ -9,14 +9,14 @@ import {
 } from "@mui/icons-material";
 import SideBarChat from "./SideBarChat";
 import db from "../firebase";
-
-
-
+import { useStateValue } from "../StateProvider";
 
 function SideBar() {
   const [room,setRoom]=useState([]);
+const[{user},dispatch]=useStateValue();
+
 useEffect(()=>{
-const unsubscribe=db.collection('rooms').onSnapshot(snapshot=>(
+db.collection('rooms').onSnapshot(snapshot=>(
   setRoom(snapshot.docs.map(doc=>(
     {
       id:doc.id,
@@ -24,14 +24,12 @@ const unsubscribe=db.collection('rooms').onSnapshot(snapshot=>(
     }
   )))
 ))
-return()=>{
-  unsubscribe();
-}
+
 },[])
   return (
     <div className="sidebar">
       <div className="sidebar_header">
-        <Avatar />
+        <Avatar src={user?.photoURL}/>
         <div className="sidebar_header_right">
           <IconButton>
             <DonutLarge />

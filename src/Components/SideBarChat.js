@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom";
+import {  Link } from "react-router-dom";
 import "./SideBarChat.css";
 import { Avatar } from "@mui/material";
 import db from "../firebase"
