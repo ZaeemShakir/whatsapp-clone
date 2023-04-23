@@ -1,5 +1,7 @@
 .chat{
     flex:0.75;
+    display: flex;
+    flex-direction: column;
 }
 .chat_header{
     padding: 20px;
@@ -26,5 +28,61 @@
     min-width: 100px;
 }
 .chat_body{
-    
+    background-image: url("https://www.indy100.com/media-library/image.jpg?id=28092000&width=1245&height=700&quality=85&coordinates=0%2C335%2C0%2C335");
+   overflow-y: scroll;
+   overflow-x: hidden;
+    padding: 30px;
+    flex: 1;
+   
+   
+}
+.chat_message{
+    position: relative;
+    font-size: 16px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    width: fit-content;
+    margin-bottom: 10px;
+}
+.chatname{
+    position: absolute;
+    top:-20px;
+    font-weight: 800;
+    font-size: small;
+   
+}
+.timestamp{
+margin-left: 10px;
+font-size: x-small;
+}
+.chat_reciever{
+    margin-left: auto;
+    background-color: #dcf8c6;
+}
+.chat_footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    border-top: 1px solid lightgray;
+}
+.chat_footer>form{
+    flex:1;
+    display: flex;
+
+}
+.chat_footer>form>input{
+    flex:1;
+    border-radius: 30px;
+    border:none;
+    outline: none;
+    padding: 10px;
+}
+.chat_footer>form>button{
+    display: none;
+}
+.chat_footer>MuiSvgIcon-root{
+    padding: 10px;
+    color:gray;
 }
