@@ -35,6 +35,7 @@ const [{user},dispatch]=useStateValue();
       .orderBy("timestamp","asc")
       .onSnapshot(snapshot=>
           setMessages(snapshot.docs.map((doc)=>doc.data()))
+          
         )
       setSeed(Math.floor(Math.random() * 5000));
     }
@@ -57,7 +58,7 @@ const [{user},dispatch]=useStateValue();
         <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
         <div className="chat_header_info">
           <h3>{roomName}</h3>
-          <p>last seen....</p>
+          <p>{new Date(messages[messages.length-1]?.timestamp?.toDate()).toUTCString()}</p>
         </div>
         <div className="chat_header_right">
           <IconButton>
@@ -73,13 +74,11 @@ const [{user},dispatch]=useStateValue();
       </div>
       <div className="chat_body">
 {messages.map(message=>(
-  <p className={`chat_message ${true && "chat_reciever"}`}>
+  <p key={message.timestamp} className={`chat_message ${message.name===user.displayName && "chat_reciever"}`}>
   <span className="chatname">{message.name}</span>{message.message}
   <span className="timestamp">{new Date(message.timeStamp?.toDate()).toUTCString()}</span>
 </p>
 ))}
-
-        
       </div>
       <div className="chat_footer">
         <InsertEmoticon />
